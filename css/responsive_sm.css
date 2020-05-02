@@ -1,3 +1,94 @@
-#drop-down-button {
-    width: 40px;
+header {
+    height: 35px;
+}
+
+header > h1 {
+    display: inline;
+}
+
+nav {
+    position: relative;
+    float: right;
+}
+
+#dd-imgcontainer {
+    width: 35px;
+    height: 35px;
+    border-style: dashed;
+    border-width: 1px 1px 1px 1px;
+    border-radius: 5px;
+    transition-property: background-color;
+    transition-timing-function: ease-in-out;
+    transition-duration: .15s;
+    transition-delay: 0s;
+}
+
+nav:hover #dd-imgcontainer {
+    background-color: #74b38d;
+    border-style: solid solid ridge solid;
+}
+
+#dd-img {
+    width: 35px;
+    height: 35px;
+    transition-property: transform;
+    transition-timing-function: ease-in-out;
+    transition-duration: .1s;
+    transition-delay: .0s;
+}
+
+nav:hover #dd-img {
+    transform: rotate(90deg);
+}
+
+#dd-content {
+    display: block;
+    visibility: hidden;
+    position: absolute;
+    right: 0;
+    margin: 0px;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    list-style-type: none;
+    text-decoration: none;
+    text-align: right;
+    float: right;
+    background-color: #74b38d;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+    z-index: 1;
+    opacity: 0;
+    transition-property: opacity, visibility;
+    transition-timing-function: ease-in-out, ease-in-out;
+    transition-duration: .15s, .15s;
+    transition-delay: 0s, 0s;
+}
+
+nav:hover #dd-content {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+    margin: 0px;
+}
+
+#dd-content li {
+    margin: 10px 0px;
+}
+
+#dd-content a {
+    display: block;
+    color: black;
+    text-decoration: none;
+    line-height: 170%;
+    padding: 0px 4px;
+}
+
+#dd-content a.current {
+    text-decoration: underline;
+}
+
+#dd-content a:hover {
+    background-color: #f1f1f1;
+    border-radius: 1px;
 }

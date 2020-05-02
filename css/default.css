@@ -1,6 +1,6 @@
 body {
     font-family: Consolas;
-    height: 97.3vh;
+    height: 100vh;
     background: rgb(255,255,255);
     background: linear-gradient(120deg, rgba(255,255,255,1) 0%, rgba(0,147,35,0.25) 100%);
 }
