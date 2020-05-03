@@ -4,6 +4,8 @@ header {
 
 header > h1 {
     display: inline;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #8a2985d0; 
 }
 
 nav {
@@ -91,4 +93,27 @@ nav:hover #dd-content, nav:focus #dd-content, nav:active #dd-content {
 #dd-content a:hover {
     background-color: #f1f1f1;
     border-radius: 1px;
+}
+
+#dd-content a:active {
+    background-color: #f1f1f1;
+    border-radius: 1px;
+}
+
+section > h1 {
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
+}
+
+section > p {
+    font-size: 13px;
+    font-family: Helvetica, sans-serif;
+}
+
+section > p > a {
+    text-decoration: none;
+}
+
+footer {
+    font-size: 11px;
 }
