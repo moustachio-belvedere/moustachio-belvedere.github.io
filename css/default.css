@@ -1,3 +1,8 @@
+.resize-animation-stopper * {
+  transition: none !important;
+  animation: none !important;
+}
+
 html {
     min-height: 100%;
 }
@@ -6,8 +11,18 @@ body {
     font-family: monospace;
     font-size: 14px;
     min-height: 100%;
+    margin: 0px;
+    padding: 0px;
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,147,35,0.1) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,147,35,0.3) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+}
+
+.main-container {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 7px;
+    margin: 0px;
+    min-height: 100vh;
 }

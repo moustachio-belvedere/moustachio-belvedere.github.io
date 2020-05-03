@@ -49,10 +49,7 @@ nav:hover #dd-img {
     position: absolute;
     right: 0;
     margin: 0px;
-    background-color: #f9f9f9;
     min-width: 160px;
-    list-style-type: none;
-    text-decoration: none;
     text-align: right;
     float: right;
     background-color: #74b38d;
@@ -70,12 +67,6 @@ nav:hover #dd-img {
 nav:hover #dd-content, nav:focus #dd-content, nav:active #dd-content {
     visibility: visible;
     opacity: 1;
-    display: block;
-    margin: 0px;
-}
-
-#dd-content li {
-    margin: 10px 0px;
 }
 
 #dd-content a {
@@ -90,12 +81,7 @@ nav:hover #dd-content, nav:focus #dd-content, nav:active #dd-content {
     text-decoration: underline;
 }
 
-#dd-content a:hover {
-    background-color: #f1f1f1;
-    border-radius: 1px;
-}
-
-#dd-content a:active {
+#dd-content a:hover, #dd-content a:active {
     background-color: #f1f1f1;
     border-radius: 1px;
 }

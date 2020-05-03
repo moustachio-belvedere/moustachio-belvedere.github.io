@@ -1,0 +1,74 @@
+@media only screen and (min-width : 768px) {
+
+body {
+    min-width: 768px;
+    text-align: center;
+}
+
+.main-container {
+    width: 768px;
+    text-align: left;
+}
+
+header {
+    height: 7vh;
+    width: 768px;
+    text-align: center;
+    margin: 0px auto;
+}
+
+header > h1 {
+    display: block;
+    margin: 0px;
+    font-size: 30px;
+    text-shadow: 1px 1px 1px #8a2985d0; 
+}
+
+nav {
+    display: block;
+    width: 100%;
+    margin: 8px auto;
+}
+
+#dd-imgcontainer {
+    display: none;
+}
+
+#dd-content {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+    width: 100%;
+    text-align: center;
+    background-color: #74b38d;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 5px;
+}
+
+#dd-content a {
+    display: inline-block;
+    text-align: center;
+    line-height: 170%;
+    border-style: solid;
+    border-width: 0px 1px 0px 0px;
+    padding: 4px 10px;
+    margin: 0px;
+}
+
+#dd-content a:first-child {
+    /* padding: 4px 9px 4px 9px; */
+    border-width: 0px 1px 0px 1px;
+    margin: 0px;
+}
+
+#dd-content a.current {
+    text-decoration: underline;
+}
+
+#dd-content a:hover, #dd-content a:active {
+    background-color: #f1f1f1;
+    border-radius: 1px;
+}
+
+}
