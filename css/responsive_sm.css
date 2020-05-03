@@ -25,7 +25,7 @@ nav {
 
 nav:hover #dd-imgcontainer {
     background-color: #74b38d;
-    border-style: solid solid ridge solid;
+    border-style: solid solid double solid;
 }
 
 #dd-img {
@@ -65,7 +65,7 @@ nav:hover #dd-img {
     transition-delay: 0s, 0s;
 }
 
-nav:hover #dd-content {
+nav:hover #dd-content, nav:focus #dd-content, nav:active #dd-content {
     visibility: visible;
     opacity: 1;
     display: block;
