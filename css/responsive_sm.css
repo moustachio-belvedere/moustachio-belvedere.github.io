@@ -105,13 +105,38 @@ section > h1 {
     font-style: italic;
 }
 
-section > p {
+section > h2 {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}
+
+section p {
     font-size: 13px;
     font-family: Helvetica, sans-serif;
 }
 
 section > p > a {
     text-decoration: none;
+    color: #0300ad;
+}
+
+section > p > a:hover {
+    background-color: #fbff0063;
+    border-radius: 3px;
+}
+
+section ul li {
+    font-size: 13px;
+    font-family: Helvetica, sans-serif;
+    margin: 6px 1px;
+}
+
+section details {
+    margin: 6px 1px;
+}
+
+section details summary {
+    font-size: 15px;
 }
 
 footer {
