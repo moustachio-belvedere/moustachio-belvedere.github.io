@@ -7,17 +7,20 @@ body {
 
 .main-container {
     width: 768px;
-    text-align: left;
+    text-align: center;
+    padding: 0px;
+    margin: 0px auto;
 }
 
 header {
-    height: 7vh;
+    height: 8vh;
     width: 768px;
     text-align: center;
-    margin: 0px auto 10px;
+    margin: 5px auto 10px;
 }
 
 header > h1 {
+    text-align: center;
     display: block;
     margin: 0px;
     font-size: 30px;
@@ -28,6 +31,11 @@ nav {
     display: block;
     width: 100%;
     margin: 8px auto;
+}
+
+section {
+    margin: 10px;
+    text-align: left;
 }
 
 section > h1 {
@@ -75,5 +83,19 @@ section > h1 {
     background-color: #f1f1f1;
     border-radius: 1px;
 }
+
+section.imgsection {
+    text-align: center;
+}
+
+div.imgshowcase img {
+    max-width: 720px;
+}
+
+div.imgshowcase figure {
+    max-width: 720px;
+    margin: 20px auto;
+}
+
 
 }

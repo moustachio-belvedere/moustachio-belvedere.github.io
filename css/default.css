@@ -17,6 +17,7 @@ body {
     background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,147,35,0.3) 100%);
     background-repeat: no-repeat;
     background-attachment: fixed;
+    text-align: center;
 }
 
 .main-container {
@@ -26,3 +27,4 @@ body {
     margin: 0px;
     min-height: 100vh;
 }
+

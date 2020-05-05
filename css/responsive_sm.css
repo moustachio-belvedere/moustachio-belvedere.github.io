@@ -1,10 +1,12 @@
 header {
+    text-align: left;
     height: 35px;
     margin: 3px 3px 25px 3px;
 }
 
 header > h1 {
     display: inline;
+    text-align: left;
     font-size: 30px;
     text-shadow: 1px 1px 1px #8a2985d0; 
 }
@@ -87,9 +89,14 @@ nav:hover #dd-content, nav:focus #dd-content, nav:active #dd-content {
     border-radius: 1px;
 }
 
+section {
+    text-align: left;
+}
+
 section > h1 {
     font-family: 'Courier New', Courier, monospace;
     font-style: italic;
+    text-align: left;
 }
 
 section > h2 {
@@ -126,7 +133,63 @@ section details summary {
     font-size: 15px;
 }
 
+div.imgshowcase {
+    text-align: center;
+    padding: 0px;
+}
+
+div.imgshowcase > h1 {
+    float: left;
+}
+
+#imgfig {
+    display: block;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border: solid;
+    border-width: 3px;
+    border-color: black;
+    margin: 5px auto;
+    padding: 0px;
+    width: 95vw;
+}
+
+#imgfig figcaption {
+    margin: 5px;
+}
+
+#imgfig img {
+    text-align: center;
+    display: block;
+    width: 100%;
+}
+
+#imgnav {
+    margin: 5px auto;
+    display: block;
+    border: none;
+    background-color: transparent;
+    width: 95vw;
+}
+
+.imgnavbuttons {
+    display: inline-block;
+    margin: 10px 5%;
+    width: 15vw;
+}
+
+.imgnavbuttons img {
+    width: 5vw;
+}
+
+.imgnavbuttons figcaption {
+    text-align: center;
+}
+
 footer {
+    width: 80%;
     font-size: 10px;
-    margin: 25px;
+    text-align: center;
+    margin: 25px auto;
 }
