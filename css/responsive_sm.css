@@ -126,5 +126,6 @@ section details summary {
 }
 
 footer {
-    font-size: 11px;
+    font-size: 10px;
+    margin: 25px;
 }
