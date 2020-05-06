@@ -160,16 +160,18 @@ div.imgshowcase {
 }
 
 #imgfig figcaption {
-    font-size: 80%;
+    font-size: 85%;
     margin: 5px;
 }
 
 #imgfig img {
+    max-height: min(485px, 92%);
+    max-width: 100%;
     text-align: center;
     /* min-width: 100%; */
     /* width: auto; */
-    max-width: 100%;
-    /* max-height: 100%; */
+    width: auto;
+    height: max(auto, 92%);
 }
 
 #imgnav {
@@ -185,6 +187,10 @@ div.imgshowcase {
     margin: 10px 5%;
     width: min(15vw, 250px);
     border-radius: 5px;
+}
+
+#figfullscreen {
+    min-width: 95px;
 }
 
 .imgnavbuttons:hover {
