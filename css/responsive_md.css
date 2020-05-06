@@ -88,14 +88,31 @@ section.imgsection {
     text-align: center;
 }
 
-div.imgshowcase img {
-    max-width: 720px;
-}
-
 div.imgshowcase figure {
     max-width: 720px;
     margin: 20px auto;
 }
 
+div.imgshowcase img {
+    max-width: 720px;
+}
+
+#imgnav {
+    width: 720px;
+}
+
+.imgnavbuttons {
+    margin: 10px 5%;
+    width: 120px;
+}
+
+.imgnavbuttons img {
+    width: 40px;
+}
+
+.imgnavbuttons figcaption {
+    font-size: 110%;
+    font-weight: bold;
+}
 
 }

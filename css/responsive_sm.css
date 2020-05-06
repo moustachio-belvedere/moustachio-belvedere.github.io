@@ -133,13 +133,13 @@ section details summary {
     font-size: 15px;
 }
 
+div.imgsection > h1 {
+    float: left;
+}
+
 div.imgshowcase {
     text-align: center;
     padding: 0px;
-}
-
-div.imgshowcase > h1 {
-    float: left;
 }
 
 #imgfig {
@@ -152,25 +152,29 @@ div.imgshowcase > h1 {
     border-color: black;
     margin: 5px auto;
     padding: 0px;
-    /* height: 40vh; */
     width: 95vw;
+    height: 68vw;
+    min-width: 304px;
+    min-height: 320px;
+    max-height: 513px;
 }
 
 #imgfig figcaption {
+    font-size: 80%;
     margin: 5px;
-    /* line-height: 250%; */
 }
 
 #imgfig img {
     text-align: center;
-    display: block;
-    min-width: 100%;
+    /* min-width: 100%; */
+    /* width: auto; */
     max-width: 100%;
+    /* max-height: 100%; */
 }
 
 #imgnav {
+    text-align: center;
     margin: 5px auto;
-    display: block;
     border: none;
     background-color: transparent;
     width: 95vw;
@@ -179,11 +183,20 @@ div.imgshowcase > h1 {
 .imgnavbuttons {
     display: inline-block;
     margin: 10px 5%;
-    width: 15vw;
+    width: min(15vw, 250px);
+    border-radius: 5px;
+}
+
+.imgnavbuttons:hover {
+    background-color: #7aceff;
+}
+
+.imgnavbuttons:active {
+    background-color: #62a8d1;
 }
 
 .imgnavbuttons img {
-    width: 5vw;
+    width: min(5vw, 30px);
 }
 
 .imgnavbuttons figcaption {
