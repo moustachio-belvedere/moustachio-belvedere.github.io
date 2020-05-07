@@ -187,6 +187,7 @@ div.imgshowcase {
     margin: 10px 5%;
     width: min(15vw, 250px);
     border-radius: 5px;
+    background-color: transparent;
 }
 
 #figfullscreen {
@@ -199,6 +200,10 @@ div.imgshowcase {
 
 .imgnavbuttons:active {
     background-color: #62a8d1;
+}
+
+.imgnavbuttons:focus {
+    background-color: pink;
 }
 
 .imgnavbuttons img {

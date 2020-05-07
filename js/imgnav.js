@@ -15,12 +15,20 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
+let buttondefocus = function() {
+    let buttons = document.getElementsByClassName("imgnavbuttons");
+    for (let i = 0; i < buttons.length; i++) {
+        buttons[i].style.backgroundColor="transparent";
+    }
+}
+
 let nowimg = function() {
     let imgEl = document.getElementById("imgimg");
     let figCaption = document.getElementById("imgfigcaption");
     imgEl.src = Imgnav.imgFilepaths[Imgnav.curstate];
     imgEl.alt = Imgnav.imgCaptions[Imgnav.curstate];
     figCaption.innerHTML = Imgnav.imgCaptions[Imgnav.curstate];
+    // buttondefocus();
 }
 
 let nextimg = function() {
