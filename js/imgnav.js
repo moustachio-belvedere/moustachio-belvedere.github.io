@@ -15,10 +15,21 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
-let buttondefocus = function() {
-    let buttons = document.getElementsByClassName("imgnavbuttons");
-    for (let i = 0; i < buttons.length; i++) {
-        buttons[i].style.backgroundColor="transparent";
+let sizeimg = function () {
+    let figEl = document.getElementById("imgfig");
+    let imgEl = document.getElementById("imgimg");
+    let figwidth = figEl.clientWidth;
+    let figheightwithcaption = figEl.clientHeight;
+    let figheight = figheightwithcaption - 25;
+    let natheight = imgEl.naturalHeight;
+    let natwidth = imgEl.naturalWidth;
+    let aspectratio = natwidth/natheight;
+    if (natheight > natwidth || figwidth/aspectratio > figheight) {
+        imgEl.style.width = `${figheight*aspectratio}px`;
+        imgEl.style.height = `${figheight}px`;
+    } else {
+        imgEl.style.height = `${figwidth/aspectratio}px`;
+        imgEl.style.width = `${figwidth}px`;
     }
 }
 
@@ -28,21 +39,19 @@ let nowimg = function() {
     imgEl.src = Imgnav.imgFilepaths[Imgnav.curstate];
     imgEl.alt = Imgnav.imgCaptions[Imgnav.curstate];
     figCaption.innerHTML = Imgnav.imgCaptions[Imgnav.curstate];
-    // buttondefocus();
 }
 
 let nextimg = function() {
     Imgnav.curstate = mod((Imgnav.curstate + 1), Imgnav.imgCaptions.length);
-    console.log(Imgnav.curstate);
     nowimg();
 }
 
 let previmg = function() {
     Imgnav.curstate = mod((Imgnav.curstate - 1), Imgnav.imgCaptions.length);
-    console.log(Imgnav.curstate);
     nowimg();
 }
 
+// button functionality assignment
 let prevbutton = document.getElementById("figbackbutton");
 let flscrnbutton = document.getElementById("figfullscreen");
 let nextbutton = document.getElementById("figforwardbutton");
@@ -50,3 +59,16 @@ let nextbutton = document.getElementById("figforwardbutton");
 prevbutton.addEventListener("click", previmg);
 // prevbutton.addEventListener("click", nextimg);
 nextbutton.addEventListener("click", nextimg);
+
+// image resizing assignment
+let imgEl = document.getElementById("imgimg");
+imgEl.addEventListener("load", sizeimg);
+window.addEventListener("resize",sizeimg);
+
+// add initial image on document load
+let initimg = function() {
+    nowimg();
+    sizeimg();
+}
+
+document.onload = initimg()
