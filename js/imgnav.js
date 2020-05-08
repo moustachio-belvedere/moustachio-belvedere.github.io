@@ -17,24 +17,6 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
-// let sizeimg0 = function () {
-//     let figEl = document.getElementById("imgfig");
-//     let imgEl = document.getElementById("imgimg");
-//     let figwidth = figEl.clientWidth;
-//     let figheightwithcaption = figEl.clientHeight;
-//     let figheight = figheightwithcaption - 25;
-//     let natheight = imgEl.naturalHeight;
-//     let natwidth = imgEl.naturalWidth;
-//     let aspectratio = natwidth/natheight;
-//     if (natheight > natwidth || figwidth/aspectratio > figheight) {
-//         imgEl.style.width = `${figheight*aspectratio}px`;
-//         imgEl.style.height = `${figheight}px`;
-//     } else {
-//         imgEl.style.height = `${figwidth/aspectratio}px`;
-//         imgEl.style.width = `${figwidth}px`;
-//     }
-// }
-
 let sizeimg = function () {
     let figEl = document.getElementById("imgfig");
     let imgEl = document.getElementById("imgimg");
@@ -52,14 +34,6 @@ let sizeimg = function () {
         imgEl.style.width = `${figwidth}px`;
     }
 }
-
-// let nowimg0 = function() {
-//     let imgEl = document.getElementById("imgimg");
-//     let figCaption = document.getElementById("imgfigcaption");
-//     imgEl.src = Imgnav.imgFilepaths[Imgnav.curstate];
-//     imgEl.alt = Imgnav.imgCaptions[Imgnav.curstate];
-//     figCaption.innerHTML = Imgnav.imgCaptions[Imgnav.curstate];
-// }
 
 let nowimg = function () {
     let imgEl = document.getElementById("imgimg");
@@ -82,22 +56,42 @@ let previmg = function() {
 
 // button functionality assignment
 let prevbutton = document.getElementById("figbackbutton");
-let flscrnbutton = document.getElementById("figfullscreen");
 let nextbutton = document.getElementById("figforwardbutton");
 
 prevbutton.addEventListener("click", previmg);
-// prevbutton.addEventListener("click", nextimg);
 nextbutton.addEventListener("click", nextimg);
+
+// fullscreen button functionality
+let fullscreenOff = function() {
+    document.exitFullscreen();
+    flscrnbutton.innerHTML = "<img src='assets/expand.svg'> Fullscreen";
+    flscrnbutton.removeEventListener("click", fullscreenOff);
+    flscrnbutton.addEventListener("click", fullscreenOn);
+}
+
+let fullscreenOn = function() {
+    let imgshowcasediv = document.getElementsByClassName("imgshowcase")[0];
+    imgshowcasediv.requestFullscreen();
+    flscrnbutton.innerHTML = "<img src='assets/contract.svg'> Exit Fullscreen";
+    flscrnbutton.removeEventListener("click", fullscreenOn);
+    flscrnbutton.addEventListener("click", fullscreenOff);
+}
+
+let flscrnbutton = document.getElementById("figfullscreen");
+if (document.fullscreenEnabled) {
+    flscrnbutton.disabled = false;
+    flscrnbutton.addEventListener("click", fullscreenOn);
+} else {
+    flscrnbutton.disabled = true;
+}
 
 // image resizing assignment
 let imgEl = document.getElementById("imgimg");
-// imgEl.addEventListener("load", sizeimg);
 window.addEventListener("resize",sizeimg);
 
 // add initial image on document load
 let initimg = function() {
     nowimg();
-    // sizeimg();
 }
 
 document.onload = initimg()
