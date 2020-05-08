@@ -1,8 +1,8 @@
 let Imgnav = { curstate: 0,
-               imgCaptions: ["Joe Louis and Max Schmeling fight for the first time, 1936",
-                             "Joe Louis and Max Schmeling as friends years later",
+               imgCaptions: ["Joe Louis and Max Schmeling, 1936",
+                             "Joe Louis and Max Schmeling years later",
                              "Jack Dempsey as a young fighter",
-                             "Sugar Ray Robinson with his wife, Edna Mae Holly",
+                             "Sugar Ray Robinson with his wife, Edna",
                              "Jack Johnson as a young fighter"],
                imgFilepaths: ["assets/boxer_joelouis_fight.jpg",
                               "assets/boxer_joelouis_friends.jpg",
@@ -20,9 +20,11 @@ function mod(n, m) {
 let sizeimg = function () {
     let figEl = document.getElementById("imgfig");
     let imgEl = document.getElementById("imgimg");
+    let figCaptionEl = document.getElementById("imgfigcaption");
     let figwidth = figEl.clientWidth;
     let figheightwithcaption = figEl.clientHeight;
-    let figheight = figheightwithcaption - 25;
+    console.log(figCaptionEl.offsetHeight);
+    let figheight = figheightwithcaption - 2*figCaptionEl.offsetHeight; //figCaptionEl.height;
     let natwidth = Imgnav.natWidth[Imgnav.curstate];
     let natheight = Imgnav.natHeight[Imgnav.curstate];
     let aspectratio = natwidth / natheight;
@@ -44,6 +46,7 @@ let FSsizeimg = function () {
     figEl.style.maxWidth = "none";
     imgEl.style.maxHeight = "none";
     imgEl.style.maxWidth = "none";
+    imgEl.style.margin = "auto auto";
     figCaptionEl.style.fontSize = "17px";
     showcaseEl.style.width = window.screen.width;
     showcaseEl.style.height = window.screen.height;
