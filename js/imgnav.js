@@ -35,6 +35,46 @@ let sizeimg = function () {
     }
 }
 
+let FSsizeimg = function () {
+    let figEl = document.getElementById("imgfig");
+    let imgEl = document.getElementById("imgimg");
+    let showcaseEl = document.getElementsByClassName("imgshowcase")[0];
+    let figCaptionEl = document.getElementById("imgfigcaption");
+    figEl.style.maxHeight = "none";
+    figEl.style.maxWidth = "none";
+    imgEl.style.maxHeight = "none";
+    imgEl.style.maxWidth = "none";
+    figCaptionEl.style.fontSize = "17px";
+    showcaseEl.style.width = window.screen.width;
+    showcaseEl.style.height = window.screen.height;
+    figEl.style.width = "100%";
+    figEl.style.height = "90%";
+    let figheightwithcaption = figEl.clientHeight;
+    let figheight = figheightwithcaption - 25;
+    let natwidth = Imgnav.natWidth[Imgnav.curstate];
+    let natheight = Imgnav.natHeight[Imgnav.curstate];
+    let aspectratio = natwidth / natheight;
+    if (natheight > natwidth || figwidth / aspectratio > figheight) {
+        imgEl.style.width = `${figheight * aspectratio}px`;
+        imgEl.style.height = `${figheight}px`;
+    } else {
+        imgEl.style.height = `${figwidth / aspectratio}px`;
+        imgEl.style.width = `${figwidth}px`;
+    }
+}
+
+let FSdownsize = function () {
+    let figEl = document.getElementById("imgfig");
+    let imgEl = document.getElementById("imgimg");
+    let showcaseEl = document.getElementsByClassName("imgshowcase")[0];
+    let figCaptionEl = document.getElementById("imgfigcaption");
+    figEl.removeAttribute("style");
+    imgEl.removeAttribute("style");
+    showcaseEl.removeAttribute("style");
+    figCaptionEl.removeAttribute("style");
+    sizeimg();
+}
+
 let nowimg = function () {
     let imgEl = document.getElementById("imgimg");
     let figCaption = document.getElementById("imgfigcaption");
@@ -63,10 +103,15 @@ nextbutton.addEventListener("click", nextimg);
 
 // fullscreen button functionality
 let fullscreenOff = function() {
-    document.exitFullscreen();
+    if (document.fullscreenElement) {
+        document.exitFullscreen()
+            .then(() => { })
+            .catch((err) => console.error(err))
+    }
     flscrnbutton.innerHTML = "<img src='assets/expand.svg'> Fullscreen";
     flscrnbutton.removeEventListener("click", fullscreenOff);
     flscrnbutton.addEventListener("click", fullscreenOn);
+    FSdownsize();
 }
 
 let fullscreenOn = function() {
@@ -75,6 +120,7 @@ let fullscreenOn = function() {
     flscrnbutton.innerHTML = "<img src='assets/contract.svg'> Exit Fullscreen";
     flscrnbutton.removeEventListener("click", fullscreenOn);
     flscrnbutton.addEventListener("click", fullscreenOff);
+    FSsizeimg();
 }
 
 let flscrnbutton = document.getElementById("figfullscreen");
@@ -84,6 +130,13 @@ if (document.fullscreenEnabled) {
 } else {
     flscrnbutton.disabled = true;
 }
+
+let fsCatcher = function() {
+    if (!document.fullscreenElement) {
+        fullscreenOff();
+    }
+}
+document.addEventListener("fullscreenchange", fsCatcher);
 
 // image resizing assignment
 let imgEl = document.getElementById("imgimg");

@@ -159,15 +159,24 @@ div.imgshowcase {
     max-height: 513px;
 }
 
+:fullscreen {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+}
+
+/* #imgfig:fullscreen {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+} */
+
 #imgfig figcaption {
     font-size: 85%;
     margin: 5px;
 }
-
-/* #imgfig img {
-    max-height: min(485px, 92%);
-    max-width: 100%;
-} */
 
 #imgnav {
     text-align: center;
