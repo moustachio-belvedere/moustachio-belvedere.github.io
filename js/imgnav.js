@@ -1,6 +1,6 @@
 let Imgnav = { curstate: 0,
                imgCaptions: ["Joe Louis and Max Schmeling, 1936",
-                             "Joe Louis and Max Schmeling years later",
+                             "Joe Louis and Max Schmeling, 1971",
                              "Jack Dempsey as a young fighter",
                              "Sugar Ray Robinson with his wife, Edna",
                              "Jack Johnson as a young fighter"],
@@ -27,15 +27,15 @@ let sizeimgSmallScreen = function () {
     let natwidth = Imgnav.natWidth[Imgnav.curstate];
     let natheight = Imgnav.natHeight[Imgnav.curstate];
     let aspectratio = natwidth / natheight;
-    if (natheight > natwidth || figwidth / aspectratio > figheight) {
+    if (natheight > natwidth || figwidth / aspectratio > (figheight-15)) {
         figEl.style.position = "relative";
         figEl.style.verticalAlign = "top";
 
         figCaptionEl.style.position = "absolute";
         figCaptionEl.style.top = "95%";
         figCaptionEl.style.bottom = "5%";
-        figCaptionEl.style.left = "10%";
-        figCaptionEl.style.right = "10%";
+        figCaptionEl.style.left = "0%";
+        figCaptionEl.style.right = "0%";
         figCaptionEl.style.margin = "5px auto";
         figCaptionEl.style.verticalAlign = "none";
 
