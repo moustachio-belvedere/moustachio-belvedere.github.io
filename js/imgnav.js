@@ -17,14 +17,70 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
-let sizeimg = function () {
+let sizeimgSmallScreen = function () {
     let figEl = document.getElementById("imgfig");
     let imgEl = document.getElementById("imgimg");
     let figCaptionEl = document.getElementById("imgfigcaption");
     let figwidth = figEl.clientWidth;
     let figheightwithcaption = figEl.clientHeight;
-    console.log(figCaptionEl.offsetHeight);
-    let figheight = figheightwithcaption - 2*figCaptionEl.offsetHeight; //figCaptionEl.height;
+    let figheight = figheightwithcaption - 2 * figCaptionEl.offsetHeight;
+    let natwidth = Imgnav.natWidth[Imgnav.curstate];
+    let natheight = Imgnav.natHeight[Imgnav.curstate];
+    let aspectratio = natwidth / natheight;
+    if (natheight > natwidth || figwidth / aspectratio > figheight) {
+        figEl.style.position = "relative";
+        figEl.style.verticalAlign = "top";
+
+        figCaptionEl.style.position = "absolute";
+        figCaptionEl.style.top = "95%";
+        figCaptionEl.style.bottom = "5%";
+        figCaptionEl.style.left = "10%";
+        figCaptionEl.style.right = "10%";
+        figCaptionEl.style.margin = "5px auto";
+        figCaptionEl.style.verticalAlign = "none";
+
+        imgEl.style.width = `${(figheight-15) * aspectratio}px`;
+        imgEl.style.height = `${(figheight-15)}px`;
+
+        imgEl.style.verticalAlign = "none";
+        imgEl.style.position = "absolute";
+        imgEl.style.top = "0px";
+        imgEl.style.bottom = "0px";
+        imgEl.style.left = "0";
+        imgEl.style.right = "0";
+        imgEl.style.margin = "0px auto";
+    } else {
+        figEl.style.position = "relative";
+        figEl.style.verticalAlign = "middle";
+
+        figCaptionEl.style.position = "absolute";
+        figCaptionEl.style.top = "95%";
+        figCaptionEl.style.bottom = "5%";
+        figCaptionEl.style.left = "10%";
+        figCaptionEl.style.right = "10%";
+        figCaptionEl.style.margin = "5px auto";
+        figCaptionEl.style.verticalAlign = "none";
+
+        imgEl.style.position = "absolute";
+        imgEl.style.top = "0%";
+        imgEl.style.bottom = `${2 * figCaptionEl.offsetHeight}px`;
+        imgEl.style.left = "0%";
+        imgEl.style.right = "0%";
+        imgEl.style.margin = "auto";
+        imgEl.style.verticalAlign = "middle";
+
+        imgEl.style.height = `${figwidth / aspectratio}px`;
+        imgEl.style.width = `${figwidth}px`;
+    }
+}
+
+let sizeimgRegularScreen = function () {
+    let figEl = document.getElementById("imgfig");
+    let imgEl = document.getElementById("imgimg");
+    let figCaptionEl = document.getElementById("imgfigcaption");
+    let figwidth = figEl.clientWidth;
+    let figheightwithcaption = figEl.clientHeight;
+    let figheight = figheightwithcaption - 2 * figCaptionEl.offsetHeight;
     let natwidth = Imgnav.natWidth[Imgnav.curstate];
     let natheight = Imgnav.natHeight[Imgnav.curstate];
     let aspectratio = natwidth / natheight;
@@ -37,6 +93,11 @@ let sizeimg = function () {
     }
 }
 
+let sizeimg = function () {
+    // sizeimgRegularScreen();
+    sizeimgSmallScreen();
+}
+
 let FSsizeimg = function () {
     let figEl = document.getElementById("imgfig");
     let imgEl = document.getElementById("imgimg");
@@ -46,12 +107,22 @@ let FSsizeimg = function () {
     figEl.style.maxWidth = "none";
     imgEl.style.maxHeight = "none";
     imgEl.style.maxWidth = "none";
-    imgEl.style.margin = "auto auto";
+
+    figEl.style.verticalAlign = "middle";
+    figEl.style.padding = "auto";
+    figEl.style.position = "relative";
     figCaptionEl.style.fontSize = "17px";
     showcaseEl.style.width = window.screen.width;
     showcaseEl.style.height = window.screen.height;
     figEl.style.width = "100%";
     figEl.style.height = "90%";
+    imgEl.style.position = "relative";
+    imgEl.style.top = "0";
+    imgEl.style.bottom = "0";
+    imgEl.style.left = "0";
+    imgEl.style.right = "0";
+    imgEl.style.margin = "auto";
+    imgEl.style.verticalAlign = "middle";
     let figheightwithcaption = figEl.clientHeight;
     let figheight = figheightwithcaption - 25;
     let natwidth = Imgnav.natWidth[Imgnav.curstate];
