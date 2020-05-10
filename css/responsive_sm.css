@@ -144,9 +144,8 @@ div.imgshowcase {
 
 #imgfig {
     display: block;
-    text-align: center;
+    /* text-align: center; */
     background-color: black;
-    color: white;
     border: solid;
     border-width: 3px;
     border-color: black;
@@ -157,28 +156,18 @@ div.imgshowcase {
     min-width: 304px;
     min-height: 320px;
     max-height: 513px;
+    position: "relative";
 }
 
-:fullscreen {
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
-}
-
-/* #imgfig:fullscreen {
-    max-width: none;
-    max-height: none;
-    width: 100%;
-    height: 100%;
-} */
-
-#imgfig figcaption {
-    font-size: 85%;
+#imgfigcaption {
+    display: block;
+    font-size: 90%;
     margin: 5px;
+    text-align: center;
 }
 
 #imgnav {
+    display: block;
     text-align: center;
     margin: 5px auto;
     border: none;
@@ -209,3 +198,18 @@ footer {
     text-align: center;
     margin: 25px auto;
 }
+
+
+/* :fullscreen {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+} */
+
+/* #imgfig:fullscreen {
+    max-width: none;
+    max-height: none;
+    width: 100%;
+    height: 100%;
+} */

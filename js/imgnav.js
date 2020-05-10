@@ -17,55 +17,25 @@ function mod(n, m) {
     return ((n % m) + m) % m;
 }
 
-let sizeimgSmallScreen = function () {
+let sizeimg = function () {
     let figEl = document.getElementById("imgfig");
     let imgEl = document.getElementById("imgimg");
-    let figCaptionEl = document.getElementById("imgfigcaption");
+
     let figwidth = figEl.clientWidth;
-    let figheightwithcaption = figEl.clientHeight;
-    let figheight = figheightwithcaption - 2 * figCaptionEl.offsetHeight;
+    let figheight = figEl.clientHeight;
     let natwidth = Imgnav.natWidth[Imgnav.curstate];
     let natheight = Imgnav.natHeight[Imgnav.curstate];
     let aspectratio = natwidth / natheight;
-    if (natheight > natwidth || figwidth / aspectratio > (figheight-15)) {
-        figEl.style.position = "relative";
-        figEl.style.verticalAlign = "top";
-
-        figCaptionEl.style.position = "absolute";
-        figCaptionEl.style.top = "95%";
-        figCaptionEl.style.bottom = "5%";
-        figCaptionEl.style.left = "0%";
-        figCaptionEl.style.right = "0%";
-        figCaptionEl.style.margin = "5px auto";
-        figCaptionEl.style.verticalAlign = "none";
-
-        imgEl.style.width = `${(figheight-15) * aspectratio}px`;
-        imgEl.style.height = `${(figheight-15)}px`;
-
-        imgEl.style.verticalAlign = "none";
-        imgEl.style.position = "absolute";
-        imgEl.style.top = "0px";
-        imgEl.style.bottom = "0px";
-        imgEl.style.left = "0";
-        imgEl.style.right = "0";
-        imgEl.style.margin = "0px auto";
+    if (natheight > natwidth || figwidth / aspectratio > figheight) {
+        imgEl.style.width = `${figheight * aspectratio}px`;
+        imgEl.style.height = `${figheight}px`;
     } else {
         figEl.style.position = "relative";
-        figEl.style.verticalAlign = "middle";
-
-        figCaptionEl.style.position = "absolute";
-        figCaptionEl.style.top = "95%";
-        figCaptionEl.style.bottom = "5%";
-        figCaptionEl.style.left = "10%";
-        figCaptionEl.style.right = "10%";
-        figCaptionEl.style.margin = "5px auto";
-        figCaptionEl.style.verticalAlign = "none";
-
         imgEl.style.position = "absolute";
-        imgEl.style.top = "0%";
-        imgEl.style.bottom = `${2 * figCaptionEl.offsetHeight}px`;
-        imgEl.style.left = "0%";
-        imgEl.style.right = "0%";
+        imgEl.style.top = "0";
+        imgEl.style.bottom = "0"
+        imgEl.style.left = "0";
+        imgEl.style.right = "0";
         imgEl.style.margin = "auto";
         imgEl.style.verticalAlign = "middle";
 
@@ -74,48 +44,35 @@ let sizeimgSmallScreen = function () {
     }
 }
 
-let sizeimgRegularScreen = function () {
-    let figEl = document.getElementById("imgfig");
-    let imgEl = document.getElementById("imgimg");
-    let figCaptionEl = document.getElementById("imgfigcaption");
-    let figwidth = figEl.clientWidth;
-    let figheightwithcaption = figEl.clientHeight;
-    let figheight = figheightwithcaption - 2 * figCaptionEl.offsetHeight;
-    let natwidth = Imgnav.natWidth[Imgnav.curstate];
-    let natheight = Imgnav.natHeight[Imgnav.curstate];
-    let aspectratio = natwidth / natheight;
-    if (natheight > natwidth || figwidth / aspectratio > figheight) {
-        imgEl.style.width = `${figheight * aspectratio}px`;
-        imgEl.style.height = `${figheight}px`;
-    } else {
-        imgEl.style.height = `${figwidth / aspectratio}px`;
-        imgEl.style.width = `${figwidth}px`;
-    }
-}
-
-let sizeimg = function () {
-    // sizeimgRegularScreen();
-    sizeimgSmallScreen();
-}
-
 let FSsizeimg = function () {
     let figEl = document.getElementById("imgfig");
     let imgEl = document.getElementById("imgimg");
     let showcaseEl = document.getElementsByClassName("imgshowcase")[0];
     let figCaptionEl = document.getElementById("imgfigcaption");
-    figEl.style.maxHeight = "none";
-    figEl.style.maxWidth = "none";
-    imgEl.style.maxHeight = "none";
-    imgEl.style.maxWidth = "none";
+    let navButtons = document.getElementsByClassName("imgnavbuttons");
+
+    showcaseEl.style.maxWidth = "none";
+    showcaseEl.style.width = "100vw";
+    showcaseEl.style.maxHeight = "none";
+    showcaseEl.style.height = "85vh";
+
+    figEl.style.maxHeight = "100vh";
+    figEl.style.maxWidth = "100vw";
+    imgEl.style.maxHeight = "100vh";
+    imgEl.style.maxWidth = "100vw";
 
     figEl.style.verticalAlign = "middle";
     figEl.style.padding = "auto";
     figEl.style.position = "relative";
-    figCaptionEl.style.fontSize = "17px";
-    showcaseEl.style.width = window.screen.width;
-    showcaseEl.style.height = window.screen.height;
+
+    figCaptionEl.style.fontSize = "15px";
+    figCaptionEl.style.color = "white";
+    figCaptionEl.style.height = "5%"
+    figCaptionEl.style.width = "100%";
+
     figEl.style.width = "100%";
-    figEl.style.height = "90%";
+    figEl.style.height = "75%";
+    
     imgEl.style.position = "relative";
     imgEl.style.top = "0";
     imgEl.style.bottom = "0";
@@ -123,18 +80,13 @@ let FSsizeimg = function () {
     imgEl.style.right = "0";
     imgEl.style.margin = "auto";
     imgEl.style.verticalAlign = "middle";
-    let figheightwithcaption = figEl.clientHeight;
-    let figheight = figheightwithcaption - 25;
-    let natwidth = Imgnav.natWidth[Imgnav.curstate];
-    let natheight = Imgnav.natHeight[Imgnav.curstate];
-    let aspectratio = natwidth / natheight;
-    if (natheight > natwidth || figwidth / aspectratio > figheight) {
-        imgEl.style.width = `${figheight * aspectratio}px`;
-        imgEl.style.height = `${figheight}px`;
-    } else {
-        imgEl.style.height = `${figwidth / aspectratio}px`;
-        imgEl.style.width = `${figwidth}px`;
+
+    for (let navButton of navButtons) {
+        navButton.style.height = "100%"
+        navButton.style.width = "21%"
     }
+
+    sizeimg();
 }
 
 let FSdownsize = function () {
@@ -142,10 +94,14 @@ let FSdownsize = function () {
     let imgEl = document.getElementById("imgimg");
     let showcaseEl = document.getElementsByClassName("imgshowcase")[0];
     let figCaptionEl = document.getElementById("imgfigcaption");
+    let navButtons = document.getElementsByClassName("imgnavbuttons");
     figEl.removeAttribute("style");
     imgEl.removeAttribute("style");
     showcaseEl.removeAttribute("style");
     figCaptionEl.removeAttribute("style");
+    for (let navButton of navButtons) {
+        navButton.removeAttribute("style");
+    }
     sizeimg();
 }
 
@@ -191,7 +147,7 @@ let fullscreenOff = function() {
 let fullscreenOn = function() {
     let imgshowcasediv = document.getElementsByClassName("imgshowcase")[0];
     imgshowcasediv.requestFullscreen();
-    flscrnbutton.innerHTML = "<img src='assets/contract.svg'> Exit Fullscreen";
+    flscrnbutton.innerHTML = "<img src='assets/contract.svg'> Exit";
     flscrnbutton.removeEventListener("click", fullscreenOn);
     flscrnbutton.addEventListener("click", fullscreenOff);
     FSsizeimg();
