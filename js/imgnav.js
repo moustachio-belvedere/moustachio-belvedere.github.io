@@ -1,3 +1,5 @@
+'use strict';
+
 let Imgnav = { curstate: 0,
                imgCaptions: ["Joe Louis and Max Schmeling, 1936",
                              "Joe Louis and Max Schmeling, 1971",
