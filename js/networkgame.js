@@ -1,22 +1,41 @@
 'use strict';
 
-// let svginit = function () {
-//     let canv
-// }
+function createSpring(svg, xs, ys) {
+    let buffer = 25;
+    let halfwidth = 20;
+    let quartperiod = 5;
+    let data = [[xs, ys],
+                [xs, ys + buffer],
+                [xs - halfwidth, ys + buffer + quartperiod]];
+    let spring_points = 6;
+    let ssx = xs, ssy = ys + buffer + quartperiod;
+    for (let i = 1; i < spring_points; i++) {
+        let newpoint = [ssx + ((i%2)==1?1:-1)*halfwidth,
+                        ssy + quartperiod*2*i];
+        data.push(newpoint);
+    }
+    let fsx = data[data.length - 1][0], fsy = data[data.length - 1][1];
+    data.push([xs, fsy + quartperiod]);
+    data.push([xs, fsy + quartperiod + buffer]);
 
-// let canv = document.getElementById("maincanvas");
+    svg.append('path')
+        .attr('d', d3.line()(data))
+        .attr('stroke', 'black')
+        .attr('stroke-width', 3)
+        .attr('fill', 'none');
+}
 
-// let lineGenerator = d3.line();
-// let springPoints = [[0, 0],
-//                     [0, 100],
-//                     [20, 120],
-//                     [-20, 160],
-//                     [20, 200]
-// ];
-// let pathData = lineGenerator(springPoints);
+function main() {
+    let svg = d3.select("#maincanvas");
+    let svgEl = document.getElementById("maincanvas");
 
-// let newspring = document.createElement("path");
-// canv.appendChild(newspring);
+    let xmid = svgEl.clientWidth/2;
+    let ymid = svgEl.clientHeight/2;
+
+    createSpring(svg, xmid, ymid-75);
+}
+
+main();
 
 // d3.select('path')
 //     .attr('d', pathData)
@@ -63,18 +82,4 @@
 //     .call(responsivefy);
 
 // create data
-var data = [{ x: 0, y: 0 }, { x: 150, y: 150 }, { x: 300, y: 100 }, { x: 450, y: 20 }, { x: 600, y: 130 }]
 
-// create svg element:
-var svg = d3.select("#maincanvas")
-
-// prepare a helper function
-var lineFunc = d3.line()
-    .x(function (d) { return d.x })
-    .y(function (d) { return d.y })
-
-// Add the path using this helper function
-svg.append('path')
-    .attr('d', lineFunc(data))
-    .attr('stroke', 'black')
-    .attr('fill', 'none');
