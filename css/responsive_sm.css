@@ -219,6 +219,9 @@ footer {
     margin: 25px auto;
 }
 
+.moveableEl {
+  cursor: move;
+}
 
 /* :fullscreen {
     max-width: none;

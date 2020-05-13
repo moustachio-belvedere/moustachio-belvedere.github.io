@@ -1,7 +1,8 @@
 'use strict';
 
-function createSpring(svg, xs, ys) {
-    let spring = svg.append("g");
+function createSpring(svg, xs, ys, classname = "moveableEl") {
+    let spring = svg.append("g")
+                    .attr("class", classname);
 
     let buffer = 20;
     let halfwidth = 20;
@@ -158,6 +159,12 @@ function createDashPot(svg, xs, ys) {
 function main() {
     const svg = d3.select("#maincanvas");
     let svgEl = document.getElementById("maincanvas");
+
+    let drag = d3.behavior.drag()
+                          .origin(function (d) { return d; })
+                          .on("dragstart", dragstarted)
+                          .on("drag", dragged)
+                          .on("dragend", dragended);
 
     let xmid = svgEl.clientWidth/2;
     let ymid = svgEl.clientHeight/2;
