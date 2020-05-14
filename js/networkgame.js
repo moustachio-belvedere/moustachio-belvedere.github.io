@@ -1,6 +1,6 @@
 'use strict';
 
-function createSpring(svg, xs, ys, classname = "moveableEl") {
+function createSpring(svg, xs, ys, classname = "moveable spring") {
     let spring = svg.append("g")
                     .attr("class", classname);
 
@@ -45,8 +45,9 @@ function createSpring(svg, xs, ys, classname = "moveableEl") {
     return spring;
 }
 
-function createSpringPot(svg, xs, ys) {
-    let springpot = svg.append("g");
+function createSpringPot(svg, xs, ys, classname = "moveable springpot") {
+    let springpot = svg.append("g")
+                       .attr("class", classname);
 
     let halfwidth = 20;
     let hypotenuse = Math.sqrt(halfwidth**2 + halfwidth**2);
@@ -96,9 +97,9 @@ function createSpringPot(svg, xs, ys) {
     return springpot;
 }
 
-function createDashPot(svg, xs, ys) {
-    let dashpot = svg.append("g");
-
+function createDashPot(svg, xs, ys, classname = "moveable dashpot") {
+    let dashpot = svg.append("g")
+                     .attr("class", classname);
     let buffer = 26;
     let halfwidth = 20;
 
@@ -156,15 +157,28 @@ function createDashPot(svg, xs, ys) {
     return dashpot;
 }
 
-function main() {
-    const svg = d3.select("#maincanvas");
-    let svgEl = document.getElementById("maincanvas");
+function dragstarted() {
+    d3.event.subject.fx = d3.event.subject.x;
+    d3.event.subject.fy = d3.event.subject.y;
+}
 
-    let drag = d3.behavior.drag()
-                          .origin(function (d) { return d; })
-                          .on("dragstart", dragstarted)
-                          .on("drag", dragged)
-                          .on("dragend", dragended);
+function dragged() {
+    d3.event.subject.fx = d3.event.x;
+    d3.event.subject.fy = d3.event.y;
+}
+
+function dragended() {
+    d3.event.subject.fx = null;
+    d3.event.subject.fy = null;
+}
+
+function dragsubject() {
+    return simulation.find(d3.event.x, d3.event.y);
+}
+
+function main() {
+    const svgEl = document.getElementById("maincanvas");
+    const svg = d3.select(svgEl);
 
     let xmid = svgEl.clientWidth/2;
     let ymid = svgEl.clientHeight/2;
@@ -172,9 +186,22 @@ function main() {
     let s1 = createSpring(svg, xmid-75, ymid-75);
     let sp1 = createSpringPot(svg, xmid, ymid-75);
     let dp1 = createDashPot(svg, xmid+75, ymid-75);
+
+    return s1;
+
+
+    // s1.call(d3.drag()
+    //           .on("start", dragstarted)
+    //           .on("drag", dragged)
+    //           .on("end", dragended));
 }
 
-main();
+let s1 = main();
+
+s1.call(d3.drag()
+    .on("start", dragstarted)
+    .on("drag", dragged)
+    .on("end", dragended));
 
 // d3.select('path')
 //     .attr('d', pathData)
