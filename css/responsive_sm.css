@@ -111,7 +111,7 @@ section p {
 
 section > p > a {
     text-decoration: none;
-    color: #0300ad;
+    color: #0500ee;
 }
 
 section > p > a:hover {
@@ -225,4 +225,18 @@ footer {
 
 .moveable:active {
   cursor: grabbing;
+}
+
+#publist li {
+    margin: 10px 0px 25px 0px;
+}
+
+#publist div {
+    display: inline-block;
+    font-size: 85%;
+    border: 1px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 3.5px;
+    padding: 1px;
 }

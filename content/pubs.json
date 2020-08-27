@@ -6,7 +6,7 @@
         "title" : "Developmental modulation of root cell wall architecture confers resistance to an oomycete pathogen",
         "authors" : "Gavrin, Rey, Torode, Toulotte, Chatterjee, <b>Kaplan</b>, Evangelisti, Takagi, Charoensawan, Rengel, Journet, Debelle, de Carvalho-Nievel, Terauchi, Braybrook, Schornack",
         "permalink" : "https://doi.org/10.17863/CAM.55957",
-        "categories" : "biomechanics biology plant-pathogens"
+        "categories" : "biomechanics plant-pathogens"
     },
 
     {
@@ -62,11 +62,10 @@
     {
         "type": "Article",
         "year": "2016",
-        "journal": "Journal of Physics. Conference Series",
+        "journal": "Journal of Physics Conference Series",
         "title": "A simulation of the performance of a self-tuning energy harvesting cantilever beam",
         "authors": "<b>Kaplan</b>, Bonello, Alalwan",
         "permalink": "https://doi.org/10.1088/1742-6596/744/1/012083",
         "categories": "vibrations energy-harvesting"
-    }
-        
+    }       
 ]
