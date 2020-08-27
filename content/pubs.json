@@ -1,0 +1,72 @@
+[
+    {
+        "type" : "Article",
+        "year" : "2020",
+        "journal" : "Current Biology",
+        "title" : "Developmental modulation of root cell wall architecture confers resistance to an oomycete pathogen",
+        "authors" : "Gavrin, Rey, Torode, Toulotte, Chatterjee, <b>Kaplan</b>, Evangelisti, Takagi, Charoensawan, Rengel, Journet, Debelle, de Carvalho-Nievel, Terauchi, Braybrook, Schornack",
+        "permalink" : "https://doi.org/10.17863/CAM.55957",
+        "categories" : "biomechanics biology plant-pathogens"
+    },
+
+    {
+        "type": "Article",
+        "year": "2020",
+        "journal": "Soft Matter",
+        "title": "Fractional viscoelastic models for power-law materials",
+        "authors": "Bonfanti, <b>Kaplan</b>, Charras, Kabla",
+        "permalink": "https://doi.org/10.1039/D0SM00354A",
+        "categories": "biomechanics fractional-viscoelasticity"
+    },
+
+    {
+        "type" : "Article",
+        "year" : "2019",
+        "journal" : "University of Cambridge",
+        "title" : "Rheological Methods and Their Application To Biological Systems",
+        "authors" : "<b>Kaplan</b>",
+        "permalink" : "https://doi.org/10.17863/CAM.53661",
+        "categories" : "biomechanics fractional-viscoelasticity pectin"
+    },
+
+    {
+        "type": "Article",
+        "year": "2019",
+        "journal": "Journal of Open Source Software",
+        "title": "RHEOS.jl -- A Julia Package for Rheology Data Analysis",
+        "authors": "<b>Kaplan</b>, Bonfanti, Kabla",
+        "permalink": "https://doi.org/10.21105/joss.01700",
+        "categories": "biomechanics software fractional-viscoelasticity"
+    },
+
+    {
+        "type": "Article",
+        "year": "2019",
+        "journal": "BioRxiv",
+        "title": "On pectin methyl-esterification: Implications for in vitro and In vivo viscoelasticity",
+        "authors": "<b>Kaplan</b>, Torode, Bou Daher, Braybrook",
+        "permalink": "https://doi.org/10.1101/565614",
+        "categories": "biomechanics pectin"
+    },
+
+    {
+        "type": "Article",
+        "year": "2018",
+        "journal": "Protocols for Macroalgae Research",
+        "title": "Atomic force microscopy based analysis of cell wall elasticity in macroalgae",
+        "authors": "Torode, Linardic, <b>Kaplan</b>, Braybrook",
+        "permalink": "https://doi.org/10.1201/b21460",
+        "categories": "biomechanics algae"
+    },
+    
+    {
+        "type": "Article",
+        "year": "2016",
+        "journal": "Journal of Physics. Conference Series",
+        "title": "A simulation of the performance of a self-tuning energy harvesting cantilever beam",
+        "authors": "<b>Kaplan</b>, Bonello, Alalwan",
+        "permalink": "https://doi.org/10.1088/1742-6596/744/1/012083",
+        "categories": "vibrations energy-harvesting"
+    }
+        
+]
