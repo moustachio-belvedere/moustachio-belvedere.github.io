@@ -21,7 +21,7 @@ function articlestringify(pub) {
     
     let rects = "";
     for (let cat of cats) {
-        rects += ` <div style="background-color:${catcol(cat)};">${cat}</div>`;
+        rects += ` <div class="pubcat" style="background-color:${catcol(cat)};">${cat}</div>`;
     }
     
     console.log(rects);
@@ -31,6 +31,24 @@ function articlestringify(pub) {
                <a href="${pub.permalink}">${pub.permalink}</a>`;
     
     return str + rects;
+}
+
+function catuniques(pubs) {
+    // dict of occurences and unique cats
+    let occurences = {};
+
+}
+
+async function populatecats(pubs) {
+    // get categories paragraph element
+    let catlist = document.getElementById('catlist');
+
+    // get all unique categories
+
+
+    let str = "<b>Select/deselect categories:</b>";
+    catlist.innerHTML = str;
+   
 }
 
 async function populatelist(pubs) {
@@ -45,6 +63,7 @@ async function populatelist(pubs) {
       .append('li')
       .html(v => articlestringify(v));
 
+    populatecats(pubs);
 }
 
 fetch("content/pubs.json")
