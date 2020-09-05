@@ -24,8 +24,6 @@ function articlestringify(pub) {
         rects += ` <div class="pubcat" style="background-color:${catcol(cat)};">${cat}</div>`;
     }
     
-    console.log(rects);
-
     let str = `<b>${pub.year}. <i>${pub.title}</i></b>.
                ${pub.authors}. ${pub.journal}.
                <a href="${pub.permalink}">${pub.permalink}</a>`;
@@ -34,21 +32,53 @@ function articlestringify(pub) {
 }
 
 function catuniques(pubs) {
-    // dict of occurences and unique cats
-    let occurences = {};
-
+    // get array of unique categories
+    let occurences = [];
+    for (let pub of pubs) {
+        for (let cat of pub.categories.split(' ')) {
+            (occurences.indexOf(cat) == -1) && occurences.push(cat);
+        }
+    }
+    return occurences.sort();
 }
 
-async function populatecats(pubs) {
+let categorymanager = {
+    catstates : {},
+    update : function (cat) {
+    // get more intuitive activity state
+    console.log(cat, state);
+    }
+}
+
+function populatecats(pubs) {
     // get categories paragraph element
     let catlist = document.getElementById('catlist');
-
-    // get all unique categories
-
-
     let str = "<b>Select/deselect categories:</b>";
     catlist.innerHTML = str;
-   
+
+    // get all unique categories with number of occurences
+    let catunique = catuniques(pubs);
+    // set state of all categories in categorymanager
+    categorymanager.catstates = {};
+    for (let cat of catunique) {
+        categorymanager.catstates[cat] = true;
+    }
+
+    // place category buttons
+    d3.select('#catlist')
+      .selectAll('div')
+      .data(catunique).enter().append('div')
+      .attr('class', 'pubcat catbutton')
+      .attr('style', i => `background-color:${catcol(i)}`)
+      .html(i => i)
+      .on('click', function () {
+          this.toggleState = !this.toggleState;
+          d3.select(this)
+            .transition().duration(200)
+            .style('opacity', this.toggleState ? '0.3' : '1.0');
+        
+          categorymanager.update(this.textContent);
+      });
 }
 
 async function populatelist(pubs) {
