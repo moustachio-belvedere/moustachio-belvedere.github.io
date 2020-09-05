@@ -19,16 +19,48 @@ function articlestringify(pub) {
                   .split(' ')
                   .sort();
     
-    let rects = "";
-    for (let cat of cats) {
-        rects += ` <div class="pubcat" style="background-color:${catcol(cat)};">${cat}</div>`;
-    }
-    
     let str = `<b>${pub.year}. <i>${pub.title}</i></b>.
                ${pub.authors}. ${pub.journal}.
                <a href="${pub.permalink}">${pub.permalink}</a>`;
+
+    let rects = "";
+    for (let cat of cats) {
+        rects += ` <div class="pubcat" style="background-color:${catcol(cat)}; opacity:${categorymanager.catstates[cat] ? 1.0 : 0.3};">${cat}</div>`;
+    }
     
     return str + rects;
+}
+
+let categorymanager = {
+    getactivepubs: function () {
+        let activepubs = [];
+        for (let pub of this.pubs) {
+            let cats = pub.categories.split(' ');
+            if (cats.some(d => this.catstates[d])) {
+                activepubs.push(pub);
+            }
+        }
+        return activepubs;
+    },
+    update: function (cat) {
+        this.catstates[cat] = !this.catstates[cat];
+
+        let pubshow = this.getactivepubs();
+        console.log(pubshow);
+
+        let pubsel = d3.select('#publist')
+                       .selectAll('li')
+                       .remove();
+
+
+        d3.select('#publist')
+            .selectAll('li')
+            .data(pubshow)
+            .enter()
+            .append('li')
+            .html(v => articlestringify(v));
+
+    }
 }
 
 function catuniques(pubs) {
@@ -42,39 +74,22 @@ function catuniques(pubs) {
     return occurences.sort();
 }
 
-let categorymanager = {
-    catstates : {},
-    update : function (cat) {
-    // get more intuitive activity state
-    console.log(cat, state);
-    }
-}
-
 function populatecats(pubs) {
     // get categories paragraph element
     let catlist = document.getElementById('catlist');
     let str = "<b>Select/deselect categories:</b>";
     catlist.innerHTML = str;
 
-    // get all unique categories with number of occurences
-    let catunique = catuniques(pubs);
-    // set state of all categories in categorymanager
-    categorymanager.catstates = {};
-    for (let cat of catunique) {
-        categorymanager.catstates[cat] = true;
-    }
-
     // place category buttons
     d3.select('#catlist')
       .selectAll('div')
-      .data(catunique).enter().append('div')
+      .data(categorymanager.catunique).enter().append('div')
       .attr('class', 'pubcat catbutton')
       .attr('style', i => `background-color:${catcol(i)}`)
       .html(i => i)
       .on('click', function () {
           this.toggleState = !this.toggleState;
           d3.select(this)
-            .transition().duration(200)
             .style('opacity', this.toggleState ? '0.3' : '1.0');
         
           categorymanager.update(this.textContent);
@@ -85,6 +100,14 @@ async function populatelist(pubs) {
     let ul = document.getElementById('publist');
 
     pubs.sort((a, b) => (a.year >= b.year) ? -1 : 1);
+
+    // init category manager with all info
+    categorymanager.pubs = pubs;
+    categorymanager.catunique = catuniques(pubs);
+    categorymanager.catstates = {};
+    for (let cat of categorymanager.catunique) {
+        categorymanager.catstates[cat] = true;
+    }
 
     d3.select('#publist')
       .selectAll('li')
