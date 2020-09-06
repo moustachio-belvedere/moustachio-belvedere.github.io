@@ -13,9 +13,6 @@ body {
     margin: 0px;
     padding: 0px;
     background: rgb(255,255,255);
-    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(0,147,35,0.1) 100%);
-    background-repeat: no-repeat;
-    background-attachment: fixed;
     text-align: center;
     display: flex;
     flex-direction: column;
