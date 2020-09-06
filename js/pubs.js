@@ -46,12 +46,10 @@ let categorymanager = {
         this.catstates[cat] = !this.catstates[cat];
 
         let pubshow = this.getactivepubs();
-        console.log(pubshow);
 
         let pubsel = d3.select('#publist')
                        .selectAll('li')
                        .remove();
-
 
         d3.select('#publist')
             .selectAll('li')
@@ -85,6 +83,7 @@ function populatecats(pubs) {
       .selectAll('div')
       .data(categorymanager.catunique).enter().append('div')
       .attr('class', 'pubcat catbutton')
+      .attr('id', i => i)
       .attr('style', i => `background-color:${catcol(i)}`)
       .html(i => i)
       .on('click', function () {
@@ -94,6 +93,31 @@ function populatecats(pubs) {
         
           categorymanager.update(this.textContent);
       });
+
+    let allnone = `<div id="allcat" class="pubcat catbutton" style="background-color:white;">all</div>` +
+        `<div id="nocat" class="pubcat catbutton" style="background-color:white;">none</div>`;
+    
+    catlist.insertAdjacentHTML('beforeend', allnone);
+
+    d3.select('#nocat')
+      .on('click', function () {
+          for (let cat of categorymanager.catunique) {
+            let sel = d3.select(`#${cat}`);
+            if (!sel._groups[0][0].toggleState) {
+                sel.dispatch('click');
+            }
+        }
+      })
+
+    d3.select('#allcat')
+        .on('click', function () {
+            for (let cat of categorymanager.catunique) {
+                let sel = d3.select(`#${cat}`);
+                if (sel._groups[0][0].toggleState) {
+                    sel.dispatch('click');
+                }
+            }
+        })
 }
 
 async function populatelist(pubs) {

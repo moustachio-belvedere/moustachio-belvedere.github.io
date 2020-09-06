@@ -7,7 +7,7 @@ header {
 header > h1 {
     display: inline;
     text-align: left;
-    font-size: 24px;
+    font-size: 22px;
     text-shadow: 1px 1px 1px #8a2985d0; 
 }
 
@@ -95,7 +95,7 @@ section {
 
 section > h1 {
     font-family: 'Courier New', Courier, monospace;
-    font-size: 1.35rem;
+    font-size: 1.33rem;
     font-style: normal;
     text-align: left;
 }
@@ -126,93 +126,6 @@ section ul li {
     margin: 6px 1px;
 }
 
-section details {
-    margin: 6px 1px;
-}
-
-section details summary {
-    font-size: 15px;
-}
-
-div.imgsection > h1 {
-    float: left;
-}
-
-div.imgshowcase {
-    text-align: center;
-    padding: 0px;
-}
-
-#imgfig {
-    display: block;
-    /* text-align: center; */
-    background-color: black;
-    border: solid;
-    border-width: 3px;
-    border-color: black;
-    margin: 5px auto;
-    padding: 0px;
-    width: 95vw;
-    height: 68vw;
-    min-width: 304px;
-    min-height: 320px;
-    max-height: 513px;
-    position: "relative";
-}
-
-#imgfigcaption {
-    display: block;
-    font-size: 90%;
-    margin: 5px;
-    text-align: center;
-}
-
-#imgnav {
-    display: block;
-    text-align: center;
-    margin: 5px auto;
-    border: none;
-    background-color: transparent;
-    width: 95vw;
-}
-
-.imgnavbuttons {
-    text-align: center;
-    display: inline-block;
-    margin: 10px 3%;
-    width: min(20vw, 250px);
-}
-
-.imgnavbuttons img {
-    margin: 1px auto;
-    display: block;
-    width: min(5vw, 30px);
-}
-
-#figfullscreen {
-    min-width: 95px;
-}
-
-#d3section {
-    text-align: center;
-}
-
-#canvasdiv {
-    text-align: center;
-    background-color: white;
-    border: solid 1px;
-    max-width: 720px;
-    max-height: 500px;
-    width: 92vw;
-    height: 75vh;
-    margin: 5px auto;
-}
-
-#maincanvas {
-    width: 100%;
-    height: 100%;
-}
-
 footer {
     width: 80%;
     font-size: 11px;
@@ -225,6 +138,10 @@ footer {
     width: 95%
 }
 
+#catlist {
+    text-align: center;
+}
+
 .pubcat {
     display: inline-block;
     font-size: 85%;
@@ -232,7 +149,7 @@ footer {
     border-style: solid;
     border-color: black;
     border-radius: 3.5px;
-    padding: 1px;
+    padding: 2px;
 }
 
 .catbutton {
